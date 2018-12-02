@@ -1,0 +1,54 @@
+{
+  "name": "devconfig",
+  "version": "1.0.0",
+  "description": "configuration file to automate dev process using npm scripts and webpack",
+  "main": "webpack.config.js",
+  "scripts": {
+    "sass": "node-sass --output-style compressed -o dist/css src/scss",
+    "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "uglify": "uglifyjs src/js/*.mjs -m -c -o dist/js/main.min.mjs",
+    "uglify-legacy": "uglifyjs dist/js/*.js -m -c -o dist/js/legacy.min.js",
+    "imagemin": "imagemin src/images/* --out-dir=dist/images/ -p",
+    "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.mjs'",
+    "build:css": "npm run sass && npm run autoprefixer",
+    "build:js": "npm run uglify",
+    "build:images": "npm run imagemin",
+    "build": "npm run build:css && npm run build:js && npm run build:images",
+    "watch:css": "watch \"npm run build:css\" .",
+    "watch:js": "watch \"npm run build:js\" .",
+    "watch": "watch \"npm run build:css\" . && watch \"npm run build:js\" .",
+    "watch:all": "watch \"npm run build\" ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RXstoinkboy/devConfiguration.git"
+  },
+  "keywords": [
+    "webpack",
+    "npm",
+    "scripts",
+    "js",
+    "javascript",
+    "rxstoinkboy"
+  ],
+  "author": "RXstoinkboy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RXstoinkboy/devConfiguration/issues"
+  },
+  "homepage": "https://github.com/RXstoinkboy/devConfiguration#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.3.1",
+    "browser-sync": "^2.26.3",
+    "circular-json": "^0.3.3",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "imagemin-cli": "^4.0.0",
+    "node-sass": "^4.10.0",
+    "postcss-cli": "^6.0.1",
+    "uglify-es": "^3.3.9",
+    "uglify-js": "^3.4.9",
+    "watch": "^1.0.2"
+  }
+}
