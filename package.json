@@ -6,12 +6,13 @@
   "scripts": {
     "sass": "node-sass --output-style compressed -o dist/css src/scss",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "webpack": "webpack --mode development",
     "uglify": "uglifyjs src/js/*.mjs -m -c -o dist/js/main.min.mjs",
-    "uglify-legacy": "uglifyjs dist/js/*.js -m -c -o dist/js/legacy.min.js",
+    "uglify-legacy": "uglifyjs dist/js/*.mjs -m -c -o dist/js/legacy.min.js",
     "imagemin": "imagemin src/images/* --out-dir=dist/images/ -p",
     "serve": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.mjs'",
     "build:css": "npm run sass && npm run autoprefixer",
-    "build:js": "npm run uglify",
+    "build:js": "npm run webpack && npm run uglify && npm run uglify-legacy",
     "build:images": "npm run imagemin",
     "build": "npm run build:css && npm run build:js && npm run build:images",
     "watch:css": "watch \"npm run build:css\" .",
@@ -39,6 +40,9 @@
   "homepage": "https://github.com/RXstoinkboy/devConfiguration#readme",
   "devDependencies": {
     "autoprefixer": "^9.3.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.3",
     "circular-json": "^0.3.3",
     "eslint": "^5.9.0",
@@ -49,6 +53,8 @@
     "postcss-cli": "^6.0.1",
     "uglify-es": "^3.3.9",
     "uglify-js": "^3.4.9",
-    "watch": "^1.0.2"
+    "watch": "^1.0.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
   }
 }
