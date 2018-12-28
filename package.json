@@ -16,7 +16,7 @@
     "build:js": "npm-run-all -p webpack uglify",
     "build:img": "npm-run-all -s clean:img imagemin",
     "build": "npm-run-all -p build:*",
-    "watch:css": "chokidar \"src/scss/*.scss\" -c \"npm run build:css\"",
+    "watch:css": "chokidar \"src/scss/*\" -c \"npm run build:css\"",
     "watch:js": "chokidar \"src/js/*.js\" -c \"npm run build:js\"",
     "watch:img": "chokidar \"src/images/*\" -c \"npm run build:img\"",
     "watch": "npm-run-all -p watch:*"
