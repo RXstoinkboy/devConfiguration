@@ -13,10 +13,10 @@
     "imagemin": "imagemin src/images/* --out-dir=dist/images/ -p",
     "server": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'",
     "build:css": "npm-run-all -s sass:dist sass autoprefixer",
-    "build:js": "npm-run-all -p webpack uglify",
+    "build:js": "npm-run-all -s webpack uglify",
     "build:img": "npm-run-all -s clean:img imagemin",
     "build": "npm-run-all -p build:*",
-    "watch:css": "chokidar \"src/scss/*\" -c \"npm run build:css\"",
+    "watch:css": "chokidar \"src/scss/*/*.scss\" -c \"npm run build:css\"",
     "watch:js": "chokidar \"src/js/*.js\" -c \"npm run build:js\"",
     "watch:img": "chokidar \"src/images/*\" -c \"npm run build:img\"",
     "watch": "npm-run-all -p watch:*"

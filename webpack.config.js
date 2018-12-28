@@ -6,7 +6,7 @@ module.exports = {
     path: `${__dirname}/dist/js`,
     filename: 'legacy-[name].mjs',
   },
-  watch: true,
+  watch: false,
   mode: 'development', // ta opcja zostanie pominięta jeżeli użyjemy npm run build
   devtool: 'source-map',
   module: {
