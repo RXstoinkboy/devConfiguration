@@ -12,7 +12,7 @@
     "clean:img": "trash dist/images/*",
     "clean:js": "trash dist/js/*",
     "imagemin": "imagemin src/images/* --out-dir=dist/images/ -p",
-    "server": "browser-sync start --server --files 'dist/css/*.css, dist/js/*.js'",
+    "start": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js' --directory",
     "build:css": "npm-run-all -s sass:dist sass autoprefixer",
     "build:js": "npm-run-all -s clean:js webpack uglify",
     "build:img": "npm-run-all -s clean:img imagemin",

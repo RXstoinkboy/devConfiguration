@@ -22,7 +22,7 @@ In order to run this repository and modify it you need [**NodeJS**][1] and **npm
 1. npm scripts - used most frequently
       + to run your local server and watch app updating live
         ```
-        npm run server
+        npm start
         ```
       + watch for changes in you image files and your code
         ```
