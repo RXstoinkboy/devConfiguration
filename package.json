@@ -1,6 +1,6 @@
 {
   "name": "devconfig",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "configuration file to automate dev process using npm scripts and webpack",
   "main": "./src/js/index.js",
   "scripts": {
@@ -8,13 +8,14 @@
     "sass": "node-sass --output-style compressed -o dist/css src/scss",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
     "webpack": "webpack --mode development",
-    "uglify": "uglifyjs dist/js/*.js -m -c -o dist/js/main.min.js",
+    "uglify:legacy": "uglifyjs dist/js/*.js -m -c -o dist/js/main.min.js",
+    "uglify:modern": "uglifyjs src/js/index.js -m -c -o dist/js/modern.min.js",
     "clean:img": "trash dist/images/*",
     "clean:js": "trash dist/js/*",
     "imagemin": "imagemin src/images/* --out-dir=dist/images/ -p",
     "start": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js' --directory",
     "build:css": "npm-run-all -s sass:dist sass autoprefixer",
-    "build:js": "npm-run-all -s clean:js webpack uglify",
+    "build:js": "npm-run-all -s clean:js webpack uglify:legacy uglify:modern",
     "build:img": "npm-run-all -s clean:img imagemin",
     "build": "npm-run-all -p build:*",
     "watch:css": "chokidar \"src/scss/*/*.scss\" -c \"npm run build:css\"",
@@ -61,8 +62,5 @@
     "uglify-js": "^3.4.9",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
-  },
-  "dependencies": {
-    "lodash": "^4.17.11"
   }
 }
